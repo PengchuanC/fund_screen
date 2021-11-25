@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package services;
+option go_package = ".;services";
+
+import "classify.proto";
+import "basic.proto";
+import "style.proto";
+import "index.proto";
+
+service ScreenRpcServer {
+  // 基金行业分类
+  rpc FundCategory(services.ClassifyReq) returns (services.ClassifyResp);
+
+  // 获取基金基础信息
+  rpc FundBasicInfoHandler(services.FundBasicInfoRequest) returns (services.FundBasicInfoResponse);
+
+  // 获取基金规模属性
+  rpc FundScaleNature(services.StyleReq) returns (services.StyleResp);
+
+  // 获取基金风格属性
+  rpc FundStyleNature(services.StyleReq) returns (services.StyleResp);
+
+  // 获取基金近期最相关的指数
+  rpc FundRelatedIndex(services.IndexCorrReq) returns (services.IndexCorrResp);
+}

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package services;
+option go_package = ".;services";
+
+// many表示是否请求多期数据
+message StyleReq {
+  repeated string funds = 1;
+  bool many = 2;
+}
+
+message StyleResp {
+  map<string, Styles> data = 1;
+}
+
+message Styles {
+  message Style {
+    string secucode = 1;
+    string date = 2;
+    string style = 3;
+  }
+  repeated Style styles = 1;
+}

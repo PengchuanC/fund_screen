@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package services;
+option go_package = ".;services";
+
+message ClassifyReq {
+  repeated string secucode = 1;
+}
+
+message ClassifyResp {
+  repeated services.Classify data = 1;
+}
+
+message Classify {
+  string secucode = 1;
+  string first = 2;
+  string second = 3;
+}
